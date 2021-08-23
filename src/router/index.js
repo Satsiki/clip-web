@@ -4,6 +4,7 @@ import {
   createWebHistory, //history模式
 } from 'vue-router'
 import Layout from 'layouts/index.vue'
+import NotFound from "layouts/404.vue";
 
 const routes = [
   {
@@ -18,11 +19,11 @@ const routes = [
       },
     ],
   },
+  { path: '/:path(.*)', component: NotFound },
 ]
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-  // routes: [{ path: '/', component: () => import('views/Home.vue') }],
 })
 export default router

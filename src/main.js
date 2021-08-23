@@ -1,12 +1,20 @@
 import { createApp } from 'vue'
+import './tailwind.css'
 import App from './App.vue'
 
 // 全局样式
 import 'styles/index.scss'
+// 全局变量
+import variables from "styles/variables.module.scss";
 
 import element3 from 'plugins/element3'
 
 import router from './router'
 import store from './store'
 
-createApp(App).use(router).use(store).use(element3).mount('#app')
+const app = createApp(App).use(router).use(store).use(element3)
+
+//绑定全局css变量
+app.config.globalProperties.$variables = variables
+
+app.mount('#app') 
