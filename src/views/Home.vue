@@ -1,8 +1,6 @@
 <template>
-  <div :style="{color:$variables.menuText}">123</div>
-  <div>
-    home123
-  </div>
+  <router-link to="/about">about</router-link>
+  <router-link to="/albums">albums</router-link>
 </template>
 
 <script setup>

@@ -4,18 +4,28 @@ import {
   createWebHistory, //history模式
 } from 'vue-router'
 import Layout from 'layouts/index.vue'
-import NotFound from "layouts/404.vue";
+import NotFound from 'layouts/404.vue'
 
 const routes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/home',
+    // redirect: '/home',
     children: [
       {
         path: '/home',
         component: () => import('views/Home.vue'),
         name: 'Home',
+      },
+      {
+        path: '/about',
+        component: () => import('views/About/About.vue'),
+        name: 'About',
+      },
+      {
+        path: '/albums',
+        component: () => import('views/Albums/Albums.vue'),
+        name: 'Albums',
       },
     ],
   },
