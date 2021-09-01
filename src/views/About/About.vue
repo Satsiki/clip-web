@@ -1,6 +1,10 @@
 <template>
   <div>
-    about
+    {{$t('about.title')}}
+    {{$t('about.intro')}}
+    {{$t('about.memberIntro')}}
+    {{$t('about.boss')}}
+    {{$t('about.member')}}
   </div>
 </template>
 
