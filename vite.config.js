@@ -18,6 +18,7 @@ export default defineConfig({
       "utils": path.resolve(__dirname, "src/utils"),
       "apis": path.resolve(__dirname, "src/apis"),
       "dirs": path.resolve(__dirname, "src/directives"),
+      "assets": path.resolve(__dirname, "src/assets"),
     },
   },
   plugins: [vue()],
