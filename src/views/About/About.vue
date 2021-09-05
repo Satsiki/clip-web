@@ -40,6 +40,23 @@
           </div>
         </div>
 
+        <div class="content-card-container-type-2" v-if="item.mainType === 2">
+          <div class="content-card2" v-for="(item1,index1) in item.data" :key="index1">
+              <div class="avatar">
+                <img :src="item1.avatar" alt />
+              </div>
+              <div class="name">{{ item1.name }}</div>
+              <div class="attr">{{ item1.attr }}</div>
+              <div class="intro">{{ item1.intro }}</div>
+              <div class="link">
+                <img src="@/assets/img/Path 21.svg" alt />
+                <img src="@/assets/img/Path 22.svg" alt />
+                <img src="@/assets/img/Path 23.svg" alt />
+                <img src="@/assets/img/Path 24.svg" alt />
+              </div>
+          </div>
+        </div>
+
         <div class="content-card-container-type-3" v-if="item.mainType === 1">
           <div class="content-card" v-for="(item1,index1) in item.data" :key="index1">
             <div class="card-container">
@@ -273,6 +290,68 @@ console.log(memberIntro);
               line-height: 20px;
             }
           }
+        }
+      }
+    }
+    .content-card-container-type-2 {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 70px;
+      .content-card2{
+        height: 628px;
+        width: 412px;
+        border-radius: 2px;
+        border-top: 2px solid #e80a0a;
+        background: #F1F1F1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        .avatar{
+          width: 234px;
+          height: 234px;
+          background: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          margin-top: 30px;
+          img{
+            height: 156px;
+            width: 156px;
+            border-radius: 50%;
+          }
+        }
+        .name{
+          font-size: 25px;
+          color: #4A4A4A;
+          font-weight: bold;
+          letter-spacing: 0.75px;
+          margin-top: 30px;
+        }
+        .attr{
+          font-size: 15px;
+          color: #6b6b6b;
+          margin-top: 7px;
+        }
+        .intro{
+          width: 344px;
+          margin: 0 auto;
+          letter-spacing: 0.45px;
+          color: #9F9F9F;
+          text-align: center;
+          line-height: 30px;
+          margin-top: 20px;
+        }
+        .link{
+          display: flex;
+          justify-content: space-between;
+          width: 246px;
+          position: absolute;
+          bottom: 40px;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
         }
       }
     }

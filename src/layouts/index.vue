@@ -7,15 +7,50 @@
       <!-- 顶部导航栏 -->
       <!-- 内容区 -->
       <app-main></app-main>
+      <img src="@/assets/img/Group 29.svg" alt  @click="goTop"  v-if="btnFlag" class="go-top"/>
     </div>
   </div>
 </template>
 
 <script setup>
+import { onMounted, onUnmounted , ref } from "vue";
 import AppMain from "./components/AppMain.vue";
+
+let btnFlag = ref(true)
+
+const scrollToTop = () => {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+  if (scrollTop > 60) {
+    btnFlag.value = true
+  } else {
+    btnFlag.value = false
+  }
+}
+
+const goTop = () => {
+  const c = document.documentElement.scrollTop || document.body.scrollTop;
+  if (c > 0) {
+  window.requestAnimationFrame(goTop);
+  window.scrollTo(0, c - c / 8);
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', scrollToTop)
+})
+onUnmounted(() => {
+  window.removeEventListener('scroll', scrollToTop)
+})
+
 
 </script>
 
 <style lang="scss" scoped>
-
+.go-top{
+  position: fixed;
+  right: 106px;
+  bottom: 60px;
+  cursor: pointer;
+  width: 64px;
+}
 </style>
