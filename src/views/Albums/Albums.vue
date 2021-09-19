@@ -12,11 +12,15 @@
         <iframe id="bilibili-video" src="//player.bilibili.com/player.html?aid=755190048&bvid=BV1kr4y1w76D&cid=252489978&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
       </div>
     </div>
+    <AudioCard />
+    <LogoList :listType="2" class="logo-list"></LogoList>
   </div>
 </template>
 
 <script setup>
 import TopMenu from "components/TopMenu.vue";
+import LogoList from "components/LogoList.vue"
+import AudioCard from "components/AudioCard.vue"
 </script>
 
 <style lang="scss" scoped>
