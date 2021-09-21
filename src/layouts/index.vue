@@ -7,14 +7,18 @@
       <!-- 顶部导航栏 -->
       <!-- 内容区 -->
       <app-main></app-main>
+      <!-- <Foot containerWidth="1316px" :noPadding="true"></Foot> -->
       <img src="@/assets/img/Group 29.svg" alt  @click="goTop"  v-if="btnFlag" class="go-top"/>
+      
     </div>
+    
   </div>
 </template>
 
 <script setup>
 import { onMounted, onUnmounted , ref } from "vue";
 import AppMain from "./components/AppMain.vue";
+// import Foot from "../components/Foot.vue";
 
 let btnFlag = ref(true)
 

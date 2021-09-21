@@ -72,4 +72,9 @@ import AudioCard from "components/AudioCard.vue"
   height: 488px;
   margin-top: 26px;
 }
+.logo-list{
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 35px;
+}
 </style>

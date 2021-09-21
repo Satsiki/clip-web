@@ -84,7 +84,6 @@
       </div>
     </div>
     <LogoList :listType="2" class="logo-list"></LogoList>
-    <Foot containerWidth="1316px" :noPadding="true"></Foot>
     <!-- {{$t('about.intro')}}
     {{$t('about.memberIntro')}}
     {{$t('about.boss')}}
@@ -96,7 +95,6 @@
 import TopMenu from "components/TopMenu.vue"
 import LogoList from "components/LogoList.vue"
 import { memberIntro } from 'assets/js/about.js'
-import Foot from "../../components/Foot.vue";
 
 console.log(memberIntro);
 </script>

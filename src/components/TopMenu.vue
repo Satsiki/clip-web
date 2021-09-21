@@ -8,7 +8,7 @@
             >{{ $t(`home.about`) }}</router-link>
             <router-link
                 to="/albums"
-                :class="route.path === '/albums' && 'active'"
+                :class="route.path.includes('/albums') && 'active'"
             >{{ $t(`home.albums`) }}</router-link>
         </div>
     </div>

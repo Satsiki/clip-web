@@ -24,9 +24,14 @@ const routes = [
       },
       {
         path: '/albums',
-        component: () => import('views/Albums/Albums.vue'),
+        component: () => import('views/Albums/AlbumsList.vue'),
         name: 'Albums',
       },
+      {
+        path: '/albums/:id',
+        component: () => import('views/Albums/Albums.vue'),
+        name: 'Albums-id',
+      }
     ],
   },
   { path: '/:path(.*)', component: NotFound },

@@ -30,7 +30,9 @@ module.exports = {
       white: '#fff',
       black: '#000',
       orange: '#ff9900',
-      red: '#E6213A'
+      red: {
+        e8:'#e80a0a'
+      },
     },
     screens: {
       sm: '640px',

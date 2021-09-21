@@ -9,58 +9,68 @@
     </div>
     <div class="list-right">
       <div class="right-left">
-        <p>{{item.currentTime || '00:00'}}</p>
+        <p>{{ item.currentTime || '00:00' }}</p>
         <p>/</p>
-        <p v-if="item.duration">{{$filter.timeCom(item.duration)}}</p>
+        <p v-if="item.duration">{{ $filter.timeCom(item.duration) }}</p>
       </div>
       <div class="right-right">
-        <img src="@/assets/img/Icon awesome-play-circle.svg" v-if="!item.isPlay" alt="" @click="playAudio(item,index)">
-        <img src="@/assets/img/Icon awesome-stop-circle.svg" v-if="item.isPlay" alt="" @click="playAudio(item,index)">
+        <img
+          src="@/assets/img/Icon awesome-play-circle.svg"
+          v-if="!item.isPlay"
+          alt
+          @click="playAudio(item, index)"
+        />
+        <img
+          src="@/assets/img/Icon awesome-stop-circle.svg"
+          v-if="item.isPlay"
+          alt
+          @click="playAudio(item, index)"
+        />
         <a :href="item.audioUrl" target="_blank">
-          <img src="@/assets/img/Icon awesome-download.svg" alt="">
-        </a>   
+          <img src="@/assets/img/Icon awesome-download.svg" alt />
+        </a>
       </div>
     </div>
-    <div class="progress" :style="{width: item.progress + '%'}"></div>
+    <div class="progress" :style="{ width: item.progress + '%' }"></div>
   </div>
 </template>
 
 <script setup>
 import moment from 'moment'
-import { reactive, ref,onMounted, computed ,getCurrentInstance  } from "vue";
+import { reactive, ref, onMounted, computed, getCurrentInstance } from "vue";
 const { proxy } = getCurrentInstance();
 
 const list = reactive([
   {
-    id:1,
+    id: 1,
     title: 'ltx',
     author: 'asd',
     audioUrl: 'http://gk-pc-v5.oss-accelerate.aliyuncs.com/bac0348c43e03fe4d5ea57ee206a3280.mp3',
     isPlay: false,
   },
   {
-    id:2,
+    id: 2,
     title: 'ltx',
     author: 'asd',
     audioUrl: 'http://gk-pc-v5.oss-accelerate.aliyuncs.com/bac0348c43e03fe4d5ea57ee206a3280.mp3',
     isPlay: false,
   },
   {
-    id:3,
+    id: 3,
     title: 'ltx',
     author: 'asd',
     audioUrl: 'http://gk-pc-v5.oss-accelerate.aliyuncs.com/bac0348c43e03fe4d5ea57ee206a3280.mp3',
     isPlay: false,
   },
   {
-    id:4,
+    id: 4,
     title: 'ltx',
     author: 'asd',
     audioUrl: 'http://gk-pc-v5.oss-accelerate.aliyuncs.com/bac0348c43e03fe4d5ea57ee206a3280.mp3',
     isPlay: false,
   },
   {
-    id:5,
+    id: 5,
     title: 'ltx',
     author: 'asd',
     audioUrl: 'http://gk-pc-v5.oss-accelerate.aliyuncs.com/bac0348c43e03fe4d5ea57ee206a3280.mp3',
@@ -69,11 +79,11 @@ const list = reactive([
 ])
 
 //初始化音频
-onMounted(()=>{
-  list.forEach((item)=>{
+onMounted(() => {
+  list.forEach((item) => {
     item.audioInfo = new Audio()
     item.audioInfo.src = item.audioUrl
-    item.audioInfo.oncanplay = ()=> {
+    item.audioInfo.oncanplay = () => {
       item.duration = item.audioInfo.duration
     }
     item.progress = 0
@@ -81,17 +91,16 @@ onMounted(()=>{
 })
 
 let audio = reactive(new Audio())
-let isPlayAudio = ref(false)
 let playerInterlval = null
 
-const playAudio = (item,index)=>{
+const playAudio = (item, index) => {
   clearInterval(playerInterlval)
-  
+
   //点击按钮，所有的其他播放都被停止
   let isOtherPlay = false
-  list.forEach(listItem=>{
+  list.forEach(listItem => {
     // if(listItem.isPlay && listItem.id !== item.id){
-    if(listItem.id !== item.id){
+    if (listItem.id !== item.id) {
       listItem.isPlay = false
       listItem.progress = 0
       audio.pause()
@@ -103,7 +112,7 @@ const playAudio = (item,index)=>{
 
 
   //如果当前正在播放则暂停
-  if(item.isPlay){
+  if (item.isPlay) {
     audio.pause()
     list[index].isPlay = false
     return
@@ -112,16 +121,16 @@ const playAudio = (item,index)=>{
   console.log(987);
 
   //如果没有音频，再替换音频文件
-  if(!audio.src){
+  if (!audio.src) {
     audio.src = item.audioUrl
   }
   list[index].isPlay = true
   audio.play()
-  playerInterlval = setInterval(()=>{
+  playerInterlval = setInterval(() => {
     // console.log();
     list[index].progress = (audio.currentTime / audio.duration) * 100
     list[index].currentTime = proxy.$filter.timeCom(audio.currentTime)
-  },1000)
+  }, 1000)
 }
 
 </script>
@@ -136,23 +145,23 @@ const playAudio = (item,index)=>{
   display: flex;
   justify-content: space-between;
   position: relative;
-  .list-left{
+  .list-left {
     margin-left: 142px;
     display: flex;
     padding-top: 18px;
-    .number{
-      color: #4A4A4A;
+    .number {
+      color: #4a4a4a;
       font-weight: bold;
       font-size: 25px;
     }
-    div{
+    div {
       margin-left: 40px;
-      p{
-        color: #4A4A4A;
+      p {
+        color: #4a4a4a;
         font-weight: bold;
         font-size: 20px;
       }
-      span{
+      span {
         font-size: 15px;
         color: #9f9f9f;
         padding-top: 15px;
@@ -160,26 +169,26 @@ const playAudio = (item,index)=>{
       }
     }
   }
-  .list-right{
+  .list-right {
     display: flex;
     align-items: center;
-    .right-left{
+    .right-left {
       display: flex;
       align-items: center;
       margin-right: 40px;
-      p{
+      p {
         color: #9f9f9f;
         font-size: 20px;
         letter-spacing: 1.4px;
       }
-      p:nth-child(2){
+      p:nth-child(2) {
         padding: 0 6px;
       }
     }
-    .right-right{
+    .right-right {
       display: flex;
       align-items: center;
-      img{
+      img {
         width: 35px;
         height: 35px;
         cursor: pointer;
@@ -187,11 +196,11 @@ const playAudio = (item,index)=>{
       }
     }
   }
-  .progress{
+  .progress {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background: #E80A0A;
+    background: #e80a0a;
   }
 }
 </style>

@@ -2,15 +2,18 @@
   <section class="app-main">
     <!-- 内部应该显示子路由页面信息 -->
     <router-view v-slot="{ Component }">
-      <component :is="Component" />
+      
+      <component :is="Component">
+        
+      </component>
+      <Foot containerWidth="1316px" :noPadding="true"></Foot>
     </router-view>
+    
   </section>
 </template>
 
-<script>
-export default {
-  name: "AppMain",
-};
+<script setup>
+import Foot from "../../components/Foot.vue";
 </script>
 
 <style scoped>
