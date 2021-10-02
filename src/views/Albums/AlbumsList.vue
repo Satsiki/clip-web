@@ -16,8 +16,8 @@
     <div class="album-list">
       <div class="title">CATALOGUE</div>
       <div class="list-container">
-        <div class="list" v-for="(item,index) in albumList" :key="index" @click="$router.push(`/albums/${index + 1}`)">
-          <img :src="item.poster" alt />
+        <div class="list" v-for="(item,index) in ablumList" :key="index" @click="$router.push(`/albums/${item.serialNumber}`)">
+          <img :src="item.cover" alt />
           <p>{{ item.title }}</p>
           <span>clip-00{{ index + 1 }}</span>
         </div>
@@ -31,28 +31,30 @@
 import { reactive } from "vue";
 import LogoList from "components/LogoList.vue"
 import TopMenu from "components/TopMenu.vue";
-const albumList = reactive([
-  {
-    poster: '/img/Artboard 3 copy@3x-100@2x.png',
-    title: 'CYBER GENERATION'
-  },
-  {
-    poster: '/img/f@2x.png',
-    title: '博麗が如く~Gensougyo Mafia'
-  },
-  {
-    poster: '/img/SHIT21@2x.png',
-    title: 'S**t Genre vol 2'
-  },
-  {
-    poster: '/img/004@2x.png',
-    title: 'KAPPA SCIENCE CORP'
-  },
-  {
-    poster: '/img/CLIP-005 FIVE-O-2@2x.png',
-    title: 'GENSOKYO FIVE-O'
-  },
-])
+import { ablumList } from 'assets/js/album.js'
+
+// const albumList = reactive([
+//   {
+//     poster: '/img/Artboard 3 copy@3x-100@2x.png',
+//     title: 'CYBER GENERATION'
+//   },
+//   {
+//     poster: '/img/f@2x.png',
+//     title: '博麗が如く~Gensougyo Mafia'
+//   },
+//   {
+//     poster: '/img/SHIT21@2x.png',
+//     title: 'S**t Genre vol 2'
+//   },
+//   {
+//     poster: '/img/004@2x.png',
+//     title: 'KAPPA SCIENCE CORP'
+//   },
+//   {
+//     poster: '/img/CLIP-005 FIVE-O-2@2x.png',
+//     title: 'GENSOKYO FIVE-O'
+//   },
+// ])
 
 </script>
 

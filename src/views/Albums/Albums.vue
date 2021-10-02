@@ -2,8 +2,8 @@
   <div>
     <TopMenu />
     <div class="head">
-      <div class="sub-title">CLIP-123</div>
-      <div class="title">CYBER GENERATION</div>
+      <div class="sub-title">{{info.serialNumber}}</div>
+      <div class="title">{{info.title}}</div>
       <img src="@/assets/img/weblogo.svg" alt="" class="poster">
     </div>
     <div class="content">
@@ -11,6 +11,7 @@
       <div class="video">
         <iframe id="bilibili-video" src="//player.bilibili.com/player.html?aid=755190048&bvid=BV1kr4y1w76D&cid=252489978&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
       </div>
+      <div class="meta-data"></div>
     </div>
     <AudioCard />
     <LogoList :listType="2" class="logo-list"></LogoList>
@@ -21,6 +22,22 @@
 import TopMenu from "components/TopMenu.vue";
 import LogoList from "components/LogoList.vue"
 import AudioCard from "components/AudioCard.vue"
+import { useRoute } from "vue-router";
+import { onMounted, reactive } from "@vue/runtime-core";
+import { ablumList } from 'assets/js/album.js'
+
+const route = useRoute()
+
+const serialNumber = route.params.id
+const info = reactive(ablumList.find((item)=>{
+  return item.serialNumber === serialNumber
+}))
+
+onMounted(()=>{
+  
+  console.log(info);
+})
+
 </script>
 
 <style lang="scss" scoped>

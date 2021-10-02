@@ -163,7 +163,7 @@ console.log(memberIntro);
       height: 300px;
       background: #f1f1f1;
       margin-bottom: 40px;
-      height: 234px;
+      height: 300px;
       .card-container {
         width: 100%;
         padding-left: 86px;
@@ -321,7 +321,7 @@ console.log(memberIntro);
           }
         }
         .name{
-          font-size: 25px;
+          font-size: 20px;
           color: #4A4A4A;
           font-weight: bold;
           letter-spacing: 0.75px;
