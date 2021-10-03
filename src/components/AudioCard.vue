@@ -92,20 +92,24 @@ onMounted(() => {
 
 let audio = reactive(new Audio())
 let playerInterlval = null
+let playAudioInfo = {}
 
 const playAudio = (item, index) => {
   clearInterval(playerInterlval)
 
+
+  //如果播放的不是之前的则重新加载
+  if(item.id !== playAudioInfo.id){
+    audio.load()
+  }
+
   //点击按钮，所有的其他播放都被停止
-  let isOtherPlay = false
   list.forEach(listItem => {
-    // if(listItem.isPlay && listItem.id !== item.id){
     if (listItem.id !== item.id) {
       listItem.isPlay = false
       listItem.progress = 0
       audio.pause()
-      audio.load()
-      isOtherPlay = true
+      // audio.load()
       listItem.currentTime = undefined
     }
   })
@@ -118,16 +122,14 @@ const playAudio = (item, index) => {
     return
   }
 
-  console.log(987);
-
   //如果没有音频，再替换音频文件
   if (!audio.src) {
     audio.src = item.audioUrl
   }
   list[index].isPlay = true
+  playAudioInfo = list[index]
   audio.play()
   playerInterlval = setInterval(() => {
-    // console.log();
     list[index].progress = (audio.currentTime / audio.duration) * 100
     list[index].currentTime = proxy.$filter.timeCom(audio.currentTime)
   }, 1000)
